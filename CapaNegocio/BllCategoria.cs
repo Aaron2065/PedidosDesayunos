@@ -45,7 +45,6 @@ namespace CapaNegocio
         // Eliminar una categoría
         public static string DelCategoria(int categoriaID)
         {
-            // Opcional: podrías validar que no tenga productos relacionados antes de eliminar
             CategoriaVO categoria = DalCategoria.GetCategoriaByID(categoriaID);
 
             if (categoria != null && categoria.Activo == false)
