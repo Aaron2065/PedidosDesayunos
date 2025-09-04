@@ -42,10 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="DalCategoria.cs" />
     <Compile Include="DalCliente.cs" />
     <Compile Include="DalPedido.cs" />
     <Compile Include="DalProducto.cs" />
+    <Compile Include="MetodoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VO\VO.csproj">
+      <Project>{8b71b7f8-ae33-4b7d-9826-8a5feead4d74}</Project>
+      <Name>VO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
