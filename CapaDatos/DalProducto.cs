@@ -20,7 +20,7 @@ namespace CapaDatos
 
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    lista.Add(new ProductoVO(dr));
+                    lista.Add(new ProductoVO(dr, true));
                 }
 
                 return lista;
@@ -41,7 +41,7 @@ namespace CapaDatos
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    return new ProductoVO(ds.Tables[0].Rows[0]);
+                    return new ProductoVO(ds.Tables[0].Rows[0], false);
                 }
                 else
                 {
