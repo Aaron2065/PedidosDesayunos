@@ -108,7 +108,7 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
                     exitoso = 1;
 
-                    // Se cierra lla conexion
+                    // Se cierra la conexion
                     conn.Close();
                 }
                 return exitoso;
