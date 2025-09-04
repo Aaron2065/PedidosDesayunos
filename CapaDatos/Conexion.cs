@@ -8,5 +8,15 @@ namespace CapaDatos
 {
     internal class Conexion
     {
+        private static readonly string _cadenaConexion = @"Data Source =
+            PC;Initial Catalog=PedidosDesayunos; Integrated Security=True";
+
+        public static string ObtenerConexion
+        {
+            get
+            {
+                return _cadenaConexion;
+            }
+        }
     }
 }
