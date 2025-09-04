@@ -12,6 +12,7 @@ namespace VO
         // Atributos
         private int _productoID;
         private int _categoriaID;
+        public string _categoriaNombre;
         private string _nombre;
         private string _descripcion;
         private decimal _precio;
@@ -30,6 +31,13 @@ namespace VO
             get => _categoriaID; 
             set => _categoriaID = value; 
         }
+
+        public string CategoriaNombre
+        {
+            get => _categoriaNombre;
+            set => _categoriaNombre = value;
+        }
+
         public string Nombre 
         { 
             get => _nombre; 
@@ -74,7 +82,7 @@ namespace VO
             FechaRegistro = DateTime.Now;
         }
 
-        public ProductoVO(DataRow dr)
+        public ProductoVO(DataRow dr, bool incluirNombreCategoria = false)
         {
             ProductoID = int.Parse(dr["ProductoID"].ToString());
             CategoriaID = int.Parse(dr["CategoriaID"].ToString());
@@ -84,6 +92,12 @@ namespace VO
             ImagenUrl = dr["ImagenUrl"].ToString();
             Disponible = bool.Parse(dr["Disponible"].ToString());
             FechaRegistro = DateTime.Parse(dr["FechaRegistro"].ToString());
+
+
+            if (incluirNombreCategoria && dr.Table.Columns.Contains("CategoriaNombre"))
+                CategoriaNombre = dr["CategoriaNombre"].ToString();
+            else
+                CategoriaNombre = "";
         }
     }
 }
