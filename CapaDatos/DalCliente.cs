@@ -42,7 +42,7 @@ namespace CapaDatos
         }
 
         // Obtener cliente por ID
-        public static ClienteVO GetCategoriaByID(int id)
+        public static ClienteVO GetClienteByID(int id)
         {
             try
             {
