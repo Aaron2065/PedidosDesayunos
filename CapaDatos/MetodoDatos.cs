@@ -58,7 +58,7 @@ namespace CapaDatos
             }
             catch (Exception ex)
             {
-                return null;
+                throw new ApplicationException("Error ejecutando ExecuteDataSet: " + ex.Message, ex);
             }
             finally
             {
