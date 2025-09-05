@@ -63,14 +63,40 @@ namespace PedidosDesayunos.Pages
 
                 decimal precio = decimal.Parse(txtPrecio.Text.Trim());
 
+                // Guardar imagen si hay archivo
+                string urlImagen = "";
+                if (fuImagen.HasFile)
+                {
+                    string extension = System.IO.Path.GetExtension(fuImagen.FileName).ToLower();
+                    string[] extensionesPermitidas = { ".jpg", ".jpeg", ".png", ".gif" };
+
+                    if (!extensionesPermitidas.Contains(extension))
+                    {
+                        MostrarAlerta("Error", "Solo se permiten imágenes JPG, PNG o GIF.", "error");
+                        return;
+                    }
+
+                    string nombreArchivo = Guid.NewGuid() + extension; // nombre único
+                    string ruta = Server.MapPath("~/Uploads/Productos/");
+                    if (!System.IO.Directory.Exists(ruta))
+                        System.IO.Directory.CreateDirectory(ruta);
+
+                    fuImagen.SaveAs(System.IO.Path.Combine(ruta, nombreArchivo));
+                    urlImagen = "~/Uploads/Productos/" + nombreArchivo;
+                }
+
                 if (id == 0)
                 {
-                    BllProducto.InsProducto(categoriaID, txtNombre.Text.Trim(), txtDescripcion.Text.Trim(), precio, "", chkDisponible.Checked);
+                    BllProducto.InsProducto(categoriaID, txtNombre.Text.Trim(), txtDescripcion.Text.Trim(), precio, urlImagen, chkDisponible.Checked);
                     MostrarAlerta("Éxito", "Producto registrado correctamente.", "success");
                 }
                 else
                 {
-                    BllProducto.UpdProducto(id, categoriaID, txtNombre.Text.Trim(), txtDescripcion.Text.Trim(), precio, "", chkDisponible.Checked);
+                    // Si no sube nueva imagen, mantener la existente
+                    if (string.IsNullOrEmpty(urlImagen))
+                        urlImagen = BllProducto.GetProductoByID(id).ImagenUrl;
+
+                    BllProducto.UpdProducto(id, categoriaID, txtNombre.Text.Trim(), txtDescripcion.Text.Trim(), precio, urlImagen, chkDisponible.Checked);
                     MostrarAlerta("Éxito", "Producto actualizado correctamente.", "success");
                 }
 
@@ -82,6 +108,7 @@ namespace PedidosDesayunos.Pages
                 MostrarAlerta("Error", "No se pudo guardar el producto: " + ex.Message, "error");
             }
         }
+
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -108,6 +135,18 @@ namespace PedidosDesayunos.Pages
 
                     pnlProducto.Visible = true;
                     lblTituloModal.InnerText = "Editar Producto";
+
+                    // Mostrar imagen actual
+                    if (!string.IsNullOrEmpty(producto.ImagenUrl))
+                    {
+                        divImagenActual.Visible = true;
+                        imgProducto.ImageUrl = producto.ImagenUrl;
+                    }
+                    else
+                    {
+                        divImagenActual.Visible = false;
+                        imgProducto.ImageUrl = "";
+                    }
                 }
             }
             else if (e.CommandName == "EliminarProducto")
