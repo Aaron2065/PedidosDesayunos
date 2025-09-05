@@ -55,6 +55,17 @@
             </div>
 
             <div class="mb-3">
+                <label>Imagen del producto</label>
+                <asp:FileUpload ID="fuImagen" runat="server" CssClass="form-control" />
+            </div>
+
+            <div class="mb-3" id="divImagenActual" runat="server" visible="false">
+                <label>Imagen actual</label>
+                <br />
+                <asp:Image ID="imgProducto" runat="server" CssClass="img-thumbnail" Width="150" />
+            </div>
+
+            <div class="mb-3">
                 <label>Disponible</label>
                 <asp:CheckBox ID="chkDisponible" runat="server" Checked="true" />
             </div>
