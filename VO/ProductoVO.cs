@@ -89,7 +89,7 @@ namespace VO
             Nombre = dr["Nombre"].ToString();
             Descripcion = dr["Descripcion"].ToString();
             Precio = decimal.Parse(dr["Precio"].ToString());
-            ImagenUrl = dr["ImagenUrl"].ToString();
+            ImagenUrl = dr.Table.Columns.Contains("ImagenUrl") ? dr["ImagenUrl"].ToString() : "";
             Disponible = bool.Parse(dr["Disponible"].ToString());
             FechaRegistro = DateTime.Parse(dr["FechaRegistro"].ToString());
 
