@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="CategoriaVO.cs" />
     <Compile Include="ClienteVO.cs" />
+    <Compile Include="DetallePedidoVO.cs" />
+    <Compile Include="PedidoVO.cs" />
     <Compile Include="ProductoVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
