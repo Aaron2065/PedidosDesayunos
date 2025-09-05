@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BllCategoria.cs" />
     <Compile Include="BllCliente.cs" />
+    <Compile Include="BllDetallePedido.cs" />
     <Compile Include="BllPedido.cs" />
     <Compile Include="BllProducto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
