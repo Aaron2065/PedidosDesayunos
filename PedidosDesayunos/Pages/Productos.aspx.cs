@@ -76,7 +76,7 @@ namespace PedidosDesayunos.Pages
                         return;
                     }
 
-                    string nombreArchivo = Guid.NewGuid() + extension; // nombre único
+                    string nombreArchivo = Guid.NewGuid() + extension;
                     string ruta = Server.MapPath("~/Uploads/Productos/");
                     if (!System.IO.Directory.Exists(ruta))
                         System.IO.Directory.CreateDirectory(ruta);
