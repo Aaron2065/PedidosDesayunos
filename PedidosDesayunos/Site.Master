@@ -51,6 +51,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="/Pages/Categorias.aspx">Categorías</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="/Pages/Productos.aspx">Productos</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="/Pages/Clientes.aspx">Clientes</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="/Pages/Pedidos.aspx">Pedidos</a></li>
                     </ul>
                 </div>
             </div>
